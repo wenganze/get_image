@@ -20,12 +20,15 @@ while True:
     results = soup.find_all("img",class_="lazyload")
 
     title = soup.find("span",class_="pretty")
-
+    title = str(title.text)
+    title = title.replace(" ", "_")
+    title = title.replace("?", "")
+    
     long = [result.get("data-src") for result in results]
     long = long[1:-5]
     long = len(long)
 
-    root = f"C:\\Users\\hammann\\Pictures\\R18\\{title.text}"
+    root = f"C:\\Users\\hammann\\Pictures\\R18\\{title}"
     if not os.path.exists(root):
         os.mkdir(root)
         print('資料夾建立')
